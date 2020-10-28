@@ -21,6 +21,7 @@ class _MyAppState extends State<MyApp> {
       result3 = 0.0,
       resultx = 0.0,
       resulty = 0.0;
+  int bfboer = 0, bfjames = 0, bfhume = 0, bfpeters = 0;
 
   Gender _genderValue = Gender.MALE;
   Age _ageValue = Age.YES;
@@ -198,7 +199,7 @@ class _MyAppState extends State<MyApp> {
                     Container(
                       margin: EdgeInsets.all(5),
                       child: Table(
-                        defaultColumnWidth: FixedColumnWidth(150.0),
+                        defaultColumnWidth: FixedColumnWidth(120.0),
                         border: TableBorder.all(
                             color: Colors.black,
                             style: BorderStyle.solid,
@@ -217,30 +218,40 @@ class _MyAppState extends State<MyApp> {
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.bold))
                             ]),
+                            Column(children: [
+                              Text('Body Fat',
+                                  style: TextStyle(
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.bold))
+                            ]),
                           ]),
                           TableRow(children: [
                             Column(children: [Text('Boer')]),
                             Column(children: [
                               Text(result1.toStringAsFixed(1) + " kg")
                             ]),
+                            Column(children: [Text(bfboer.toString() + "%")]),
                           ]),
                           TableRow(children: [
                             Column(children: [Text('James')]),
                             Column(children: [
                               Text(result2.toStringAsFixed(1) + " kg")
                             ]),
+                            Column(children: [Text(bfjames.toString() + "%")]),
                           ]),
                           TableRow(children: [
                             Column(children: [Text('Hume')]),
                             Column(children: [
                               Text(result3.toStringAsFixed(1) + " kg")
                             ]),
+                            Column(children: [Text(bfhume.toString() + "%")]),
                           ]),
                           TableRow(children: [
                             Column(children: [Text('Peters')]),
                             Column(children: [
                               Text(resulty.toStringAsFixed(1) + " kg")
                             ]),
+                            Column(children: [Text(bfpeters.toString() + "%")]),
                           ]),
                         ],
                       ),
@@ -267,27 +278,43 @@ class _MyAppState extends State<MyApp> {
         result2 = 1.1 * w - 128 * (w / h) * (w / h);
         result3 = 0.32810 * w + 0.33929 * h - 29.5336;
         resulty = 0.0;
+        bfboer = 11;
+        bfjames = 14;
+        bfhume = 15;
+        bfpeters = 0;
       } else if (_genderValue == Gender.FEMALE && _ageValue == Age.NO) {
         result1 = 0.252 * w + 0.473 * h - 48.3;
         result2 = 1.07 * w - 148 * (w / h) * (w / h);
         result3 = 0.29569 * w + 0.41813 * h - 43.2933;
         resulty = 0.0;
+        bfboer = 14;
+        bfjames = 19;
+        bfhume = 18;
+        bfpeters = 0;
       } else if (_genderValue == Gender.MALE && _ageValue == Age.YES) {
         result1 = 0.407 * w + 0.267 * h - 19.2;
         result2 = 1.1 * w - 128 * (w / h) * (w / h);
         result3 = 0.32810 * w + 0.33929 * h - 29.5336;
         resultx = 0.0215 * pow(w, 0.6469) * pow(h, 0.7236);
         resulty = 3.8 * resultx;
+        bfboer = 11;
+        bfjames = 14;
+        bfhume = 15;
+        bfpeters = 18;
       } else if (_genderValue == Gender.FEMALE && _ageValue == Age.YES) {
         result1 = 0.252 * w + 0.473 * h - 48.3;
         result2 = 1.07 * w - 148 * (w / h) * (w / h);
         result3 = 0.29569 * w + 0.41813 * h - 43.2933;
         resultx = 0.0215 * pow(w, 0.6469) * pow(h, 0.7236);
         resulty = 3.8 * resultx;
-      } 
-      //else if (_hcontroller.isEmpty){
-      //print ('Please provide a valid height value. Please provide a valid weight value.');
-      //}
+        bfboer = 14;
+        bfjames = 19;
+        bfhume = 18;
+        bfpeters = 16;
+      } else {
+        print(
+            'Please provide a valid height value. Please provide a valid weight value.');
+      }
     });
   }
 }
